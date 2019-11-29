@@ -17,8 +17,10 @@ namespace TodoItemsMongoDbAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<TodoItem>> Get() =>
-            _todoItemService.Get();
+        public ActionResult<List<TodoItem>> Get()
+        {
+            return _todoItemService.Get();
+        }
 
         [HttpGet("{id:length(24)}", Name = "GetTodoItem")]
         public ActionResult<TodoItem> Get(string id)
