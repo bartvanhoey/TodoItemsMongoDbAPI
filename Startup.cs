@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using TodoItemsMongoDbAPI.DAL;
 using TodoItemsMongoDbAPI.Models;
 using TodoItemsMongoDbAPI.Services;
 
@@ -43,6 +44,7 @@ namespace TodoItemsMongoDbAPI
             services.AddSingleton<ITodoItemsDbDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<TodoItemsDbDatabaseSettings>>().Value);
 
+            services.AddSingleton<IMongoConnector, MongoConnector>();
             services.AddSingleton<TodoItemsService>();
 
             services.AddCors(options =>

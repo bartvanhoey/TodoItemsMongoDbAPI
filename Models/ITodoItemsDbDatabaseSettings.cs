@@ -2,15 +2,17 @@ namespace TodoItemsMongoDbAPI.Models
 {
     public interface ITodoItemsDbDatabaseSettings
     {
-        string TodoItemsCollectionName { get; set; }
+        string TodoItemsCollection { get; set; }
         string ConnectionString { get; set; }
-        string DatabaseName { get; set; }
+        string HostName { get; set; }
+        string Database { get; set; }
     }
 
     public class TodoItemsDbDatabaseSettings : ITodoItemsDbDatabaseSettings
     {
-        public string TodoItemsCollectionName { get; set; }
+        public string TodoItemsCollection { get; set; }
         public string ConnectionString { get; set; }
-        public string DatabaseName { get; set; }
+        public string HostName { get; set; }
+        public string Database { get; set; }
     }
 }
