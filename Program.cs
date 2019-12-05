@@ -16,18 +16,11 @@ namespace TodoItemsMongoDbAPI
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    var environment = hostingContext.HostingEnvironment;
-
+                   var environmentName = hostingContext.HostingEnvironment.EnvironmentName;
                     config.AddJsonFile(
-                        "appsettings.json", optional: false, reloadOnChange: false);
-                    config.AddJsonFile(
-                        $"appsettings.{environment.EnvironmentName}.json", optional: false, reloadOnChange: false);
-                    config.AddJsonFile(
-                        $"secrets/appsettings.{environment.EnvironmentName}.json", optional: true,
-                        reloadOnChange: false);
+                        $"secrets/appsettings.{environmentName}.json", optional: true);
 
                     new MongoConnector(config).Init();
-
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
